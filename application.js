@@ -1,20 +1,20 @@
 //Create the grid
 const container = document.querySelector('#container')
 
-const content = document.createElement('div');
-content.classList.add('content');
-//Assigns content as the child of container
-container.appendChild(content);
+const grid = document.createElement('div');
+grid.classList.add('grid');
+//Assigns grid as the child of container
+container.appendChild(grid);
 
 //const container = document.getElementById("container");
 
 function makeRows(rows, cols) {
-    content.style.setProperty('--grid-rows', rows);
-    content.style.setProperty('--grid-cols', cols);
+    grid.style.setProperty('--grid-rows', rows);
+    grid.style.setProperty('--grid-cols', cols);
     for (c = 0; c < (rows * cols); c++) {
         let cell = document.createElement("div");
         cell.innerText = (c + 1);
-        content.appendChild(cell).className = "grid-item";
+        grid.appendChild(cell).className = "grid-item";
     };
 };
 
