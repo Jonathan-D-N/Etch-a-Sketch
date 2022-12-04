@@ -27,13 +27,17 @@
 .inputcontainer {
     width: 100%;
 }
+
+
+
+
 /* range slider (track) and thumb class */
 .slider {
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
     cursor: pointer;
-    width: 12rem;
+    width: 15vh;
 }
 
 /* track browser-specific styling */

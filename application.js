@@ -1,3 +1,13 @@
+let slider = document.getElementById("gridRange");
+let output = document.getElementById("gridOutput");
+output.innerHTML = slider.value;
+
+slider.oninput = function () {
+    output.innerHTML = this.value;
+    console.log(this.value);
+    return(makeRows(this.value, this.value))
+} 
+
 //Create the grid
 const container = document.querySelector('#container')
 
@@ -18,5 +28,5 @@ function makeRows(rows, cols) {
     };
 };
 
-makeRows(16, 16)
+
 
