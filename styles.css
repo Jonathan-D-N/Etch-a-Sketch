@@ -11,14 +11,14 @@
 }
 
 .grid {
-    display: inline-block;
     display: grid;
+    height: 50vw;
+    width: 50vw;
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
 }
 
 .grid-item {
-    padding: 1em;
     border: 1px solid #ddd;
     text-align: center;
 }
@@ -27,9 +27,6 @@
 .inputcontainer {
     width: 100%;
 }
-
-
-
 
 /* range slider (track) and thumb class */
 .slider {
