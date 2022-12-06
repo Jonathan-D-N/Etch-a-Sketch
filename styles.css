@@ -10,30 +10,40 @@
     --main-white: #f8f8f8;
 }
 
+.title {
+    text-align: center;
+    font-size: 75px;
+    display: block;
+    margin-bottom: 0;
+    margin-top: 0;
+    
+}
+
 body {
     font-family: 'roboto', sans-serif;
     background-color: var(--secondary-light);
     color: var(--main-dark);
 }
 
+#container {
+    display: grid;
+    grid-template-columns: 25vw 50vw 25vw;
+    grid-template-rows: 40vw;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
 .settingsContainer {
     display: grid;
-    justify-content: center;
-    height: 25vh;
-    grid-template-columns: repeat(3, 16.66vw);
-    grid-template-rows: repeat(3, 8vh);
-}
-
-.sliderContainer {
-    display: grid;
-}
-
-#gridOutput {
-    display: grid;
-    justify-content: center;
+    width: 25vw;
+    justify-content: right;
+    align-content: center;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(auto);
 }
 
 input[type='color'] {
+    margin: auto;
     border: none;
     width: 80px;
     height: 80px;
@@ -59,7 +69,7 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 15px;
     border-radius: 4px;
     width: 15vw;
     height: 5.5vh;
@@ -69,30 +79,26 @@ button {
 button:hover,
 input[type='color']:hover {
     transform: scale(1.05);
+    transition-duration: 0.4s;
 }
 
-
-
-#container {
-    display: grid;
+#sliderOutput {
+    display: flex;
     justify-content: center;
-    height: 98vh;
-    border: 1px solid #cd1a1a;
 }
 
-.title {
-    text-align: center;
-    font-size: 75px;
-    display: block;
-    margin-bottom: 0;
-    margin-top: 0;
-    
+.sliderContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
 }
 
 .gridContainer {
     display: grid;
-    height: 50vw;
-    width: 50vw;
+    margin-top: 0;
+    margin: auto;
+    height: 700px;
+    width: 700px;
     background-color: var(--main-white);
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
@@ -108,19 +114,13 @@ input[type='color']:hover {
 }
 /**/
 
-.settingsContainer {
-    display: grid;
-    width: 50vw;
-    margin-bottom: 0.5vw;
-}
-
 /* range sizeSelection (track) and thumb class */
 .sizeSelection {
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
     cursor: pointer;
-    width: 50vw;
+    width: 200px;
 }
 
 /* track browser-specific styling */
