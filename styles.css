@@ -64,7 +64,7 @@ button {
     color: black;
     border: 2px solid var(--main-dark);
     padding: 15px 32px;
-    box-shadow: rgb(114, 114, 114) 0px 3px 7px;
+    box-shadow: rgb(114, 114, 114) 0px 1px 7px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
