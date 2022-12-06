@@ -2,7 +2,17 @@
 :root {
     --grid-cols: 1;
     --grid-rows: 1;
+    --main-dark: #34515e;
+    --main-light: #8eacbb;
+    --secondary-light: rgb(252, 252, 252);
 }
+
+body {
+    font-family: 'roboto', sans-serif;
+    background-color: var(--main-light);
+    color: var(--main-dark);
+}
+
 #container {
     display: grid;
     justify-content: center;
@@ -10,12 +20,23 @@
     border: 1px solid #cd1a1a;
 }
 
+.title {
+    text-align: center;
+    font-size: 75px;
+    display: block;
+    margin-bottom: 0;
+    margin-top: 0;
+    
+}
+
 .gridContainer {
     display: grid;
     height: 50vw;
     width: 50vw;
+    background-color: var(--secondary-light);
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
+    box-shadow: rgba(26, 25, 25, 0.3) 0px 3px 10px;
 }
 
 .grid-item {
@@ -27,12 +48,14 @@
 }
 /**/
 
-.inputcontainer {
-    width: 100%;
+.settingsContainer {
+    display: grid;
+    width: 50vw;
+    margin-bottom: 0.5vw;
 }
 
-/* range slider (track) and thumb class */
-.slider {
+/* range sizeSelection (track) and thumb class */
+.sizeSelection {
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
@@ -41,78 +64,83 @@
 }
 
 /* track browser-specific styling */
-.slider::-webkit-slider-runnable-track {
-    background: #b9b8b7;
-    height: 0.5rem;
+.sizeSelection::-webkit-slider-runnable-track {
+    background: var(--secondary-light);
+    height: 0.7rem;
     border-radius: 15px;
+    border: 1px solid var(--main-dark);
+    box-shadow: rgba(26, 25, 25, 0.3) 0px 3px 10px;
 
-}.slider::-moz-range-track {
-    background: #b9b8b7;
-    height: 0.5rem;
+}.sizeSelection::-moz-range-track {
+    background: var(--secondary-light);
+    height: 0.7rem;
     border-radius: 15px;
+    border: 1px solid var(--main-dark);
+    box-shadow: rgba(26, 25, 25, 0.3) 0px 3px 10px;
 }
 
 /* thumb browser-specific styling */
-.slider::-webkit-slider-thumb {
+.sizeSelection::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    margin-top: -4px;
-    background-color: #F29F05;
+    margin-top: -7px;
+    background-color: #607d8b;
     border-radius: 50%;
-    height: 1rem;
-    width: 1rem;
+    height: 1.5rem;
+    width: 1.5rem;
 }
 
-.slider::-moz-range-thumb {
+.sizeSelection::-moz-range-thumb {
     border: none;
+    margin-top: -7px;
+    background-color: #607d8b;
     border-radius: 50%;
-    background-color: #F29F05;
-    height: 1rem;
-    width: 1rem;
+    height: 1.5rem;
+    width: 1.5rem;
 }
 
 /* box-shadow on focus and hover w/ browser compatibility */
-.slider:focus {
+.sizeSelection:focus {
     outline: none;
 }
 
-.slider:focus::-webkit-slider-thumb {
-    background-color: #F28705;
-    box-shadow: 0 0 7px 0 #F28705;
-    height: 1.05rem;
-    width: 1.05rem;
-    margin-top: -4.5px;
+.sizeSelection:focus::-webkit-slider-thumb {
+    background-color: #c49000;
+    box-shadow: 0 0 7px 0 #c49000;
+    height: 1.55rem;
+    width: 1.55rem;
+    margin-top: -7px;
     transition-duration: 0.1s;
 }
 
-.slider:focus::-moz-range-thumb {
-    background-color: #F28705;
-    box-shadow: 0 0 7px 0 #F28705;
-    height: 1.05rem;
-    width: 1.05rem;
-    margin-top: -4.5px;
+.sizeSelection:focus::-moz-range-thumb {
+    background-color: #c49000;
+    box-shadow: 0 0 7px 0 #c49000;
+    height: 1.55rem;
+    width: 1.55rem;
+    margin-top: -7px;
     transition-duration: 0.1s;
 }
 
-.slider:hover {
+.sizeSelection:hover {
     outline: none;
 }
 
-.slider:hover::-webkit-slider-thumb {
-    background-color: #F28705;
-    box-shadow: 0 0 7px 0 #F28705;
-    height: 1.05rem;
-    width: 1.05rem;
-    margin-top: -4.5px;
+.sizeSelection:hover::-webkit-slider-thumb {
+    background-color: #c49000;
+    box-shadow: 0 0 7px 0 #c49000;
+    height: 1.55rem;
+    width: 1.55rem;
+    margin-top: -7px;
     transition-duration: 0.1s;
 }
 
-.slider:hover::-moz-range-thumb {
-    background-color: #F28705;
-    box-shadow: 0 0 7px 0 #F28705;
-    height: 1.05rem;
-    width: 1.05rem;
-    margin-top: -4.5px;
+.sizeSelection:hover::-moz-range-thumb {
+    background-color: #c49000;
+    box-shadow: 0 0 7px 0 #c49000;
+    height: 1.55rem;
+    width: 1.55rem;
+    margin-top: -7px;
     transition-duration: 0.2s;
 }
-/* end of slider track/thumb styling */
+/* end of sizeSelection track/thumb styling */
