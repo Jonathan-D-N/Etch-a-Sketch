@@ -6,11 +6,11 @@
 #container {
     display: grid;
     justify-content: center;
-    height: 100vh;
+    height: 98vh;
     border: 1px solid #cd1a1a;
 }
 
-.grid {
+.gridContainer {
     display: grid;
     height: 50vw;
     width: 50vw;
@@ -20,7 +20,10 @@
 
 .grid-item {
     border: 1px solid #ddd;
-    text-align: center;
+}
+
+.grid-item:hover {
+    background-color: red;
 }
 /**/
 
@@ -34,7 +37,7 @@
     appearance: none;
     background: transparent;
     cursor: pointer;
-    width: 15vh;
+    width: 50vw;
 }
 
 /* track browser-specific styling */
@@ -54,7 +57,7 @@
     -webkit-appearance: none;
     appearance: none;
     margin-top: -4px;
-    background-color: rgb(244, 167, 25);
+    background-color: #F29F05;
     border-radius: 50%;
     height: 1rem;
     width: 1rem;
@@ -63,7 +66,7 @@
 .slider::-moz-range-thumb {
     border: none;
     border-radius: 50%;
-    background-color: rgb(244, 167, 25);
+    background-color: #F29F05;
     height: 1rem;
     width: 1rem;
 }
@@ -74,8 +77,8 @@
 }
 
 .slider:focus::-webkit-slider-thumb {
-    background-color: rgb(248, 163, 6);
-    box-shadow: 0 0 7px 0 rgb(248, 163, 6);
+    background-color: #F28705;
+    box-shadow: 0 0 7px 0 #F28705;
     height: 1.05rem;
     width: 1.05rem;
     margin-top: -4.5px;
@@ -83,8 +86,8 @@
 }
 
 .slider:focus::-moz-range-thumb {
-    background-color: rgb(248, 163, 6);
-    box-shadow: 0 0 7px 0 rgb(248, 163, 6);
+    background-color: #F28705;
+    box-shadow: 0 0 7px 0 #F28705;
     height: 1.05rem;
     width: 1.05rem;
     margin-top: -4.5px;
@@ -96,8 +99,8 @@
 }
 
 .slider:hover::-webkit-slider-thumb {
-    background-color: rgb(248, 163, 6);
-    box-shadow: 0 0 7px 0 rgb(248, 163, 6);
+    background-color: #F28705;
+    box-shadow: 0 0 7px 0 #F28705;
     height: 1.05rem;
     width: 1.05rem;
     margin-top: -4.5px;
@@ -105,8 +108,8 @@
 }
 
 .slider:hover::-moz-range-thumb {
-    background-color: rgb(248, 163, 6);
-    box-shadow: 0 0 7px 0 rgb(248, 163, 6);
+    background-color: #F28705;
+    box-shadow: 0 0 7px 0 #F28705;
     height: 1.05rem;
     width: 1.05rem;
     margin-top: -4.5px;
