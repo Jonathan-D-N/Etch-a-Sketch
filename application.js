@@ -45,5 +45,48 @@ slider.oninput = function () {
     output.innerHTML = this.value + ' x ' + this.value;
     sliderValue = this.value;
 }
+//track mousedown, mousemove, and mouseup to enable/disable drawing.
+let isDrawing = false;
+let enableCall = true;
+let target = ''
+addEventListener('mousedown', (e) => {
+    target = e.target;
+    isDrawing = true;
+    setTimeout(() => enableCall = true, 100)
+});
+
+addEventListener('mousemove', (e) => {
+    if(!enableCall) return;
+
+    enableCall = false;  
+    if (isDrawing) {
+        console.log(target)
+        setTimeout(() => enableCall = true, 100)
+    }
+})
+
+window.addEventListener('mouseup', (e) => {
+    if (isDrawing) {
+        isDrawing = false;
+    }
+})
+
+document.body.addEventListener('mousemove', throttle(target, 300));
+
+function throttle(callback, interval) {
+    let enableCall = true;
+
+    return function (...args) {
+        if (!enableCall) return;
+
+        enableCall = false;
+        if (isDrawing) {
+            target = e.target;
+            console.log(target)
+        callback.apply(this, args);
+        setTimeout(() => enableCall = true, interval);
+        }}
+}
+
 
 
