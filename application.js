@@ -24,7 +24,7 @@ function removeElementByClass(className) {
 }
 // Range Slider
 let slider = document.getElementById("gridRange");
-let output = document.getElementById("gridOutput");
+let output = document.getElementById("sliderOutput");
 let sliderValue = (0);
 output.innerHTML = slider.value + ' x ' + slider.value;
 
