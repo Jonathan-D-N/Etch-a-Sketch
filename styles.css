@@ -2,16 +2,76 @@
 :root {
     --grid-cols: 1;
     --grid-rows: 1;
-    --main-dark: #34515e;
-    --main-light: #8eacbb;
-    --secondary-light: rgb(252, 252, 252);
+    --main-color: #90a4ae;
+    --main-dark: #62757f;
+    --secondary-dark: #4b636e;
+    --main-light: #c1d5e0;
+    --secondary-light: #e4e3e3;
+    --main-white: #f8f8f8;
 }
 
 body {
     font-family: 'roboto', sans-serif;
-    background-color: var(--main-light);
+    background-color: var(--secondary-light);
     color: var(--main-dark);
 }
+
+.settingsContainer {
+    display: grid;
+    justify-content: center;
+    height: 25vh;
+    grid-template-columns: repeat(3, 16.66vw);
+    grid-template-rows: repeat(3, 8vh);
+}
+
+.sliderContainer {
+    display: grid;
+}
+
+#gridOutput {
+    display: grid;
+    justify-content: center;
+}
+
+input[type='color'] {
+    border: none;
+    width: 80px;
+    height: 80px;
+    background-color: transparent;
+}
+
+input[type='color']::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+input[type='color']::-webkit-color-swatch {
+    border: none;
+    border-radius: 50px;
+    box-shadow: rgb(114, 114, 114) 0px 3px 7px;
+}
+button {
+    background-color: var(--secondary-light);
+    color: black;
+    border: 2px solid var(--main-dark);
+    padding: 15px 32px;
+    box-shadow: rgb(114, 114, 114) 0px 3px 7px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 4px;
+    width: 15vw;
+    height: 5.5vh;
+    transition-duration: 0.4s;
+}
+
+button:hover,
+input[type='color']:hover {
+    transform: scale(1.05);
+}
+
+
 
 #container {
     display: grid;
@@ -33,7 +93,7 @@ body {
     display: grid;
     height: 50vw;
     width: 50vw;
-    background-color: var(--secondary-light);
+    background-color: var(--main-white);
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
     box-shadow: rgba(26, 25, 25, 0.3) 0px 3px 10px;
@@ -65,14 +125,14 @@ body {
 
 /* track browser-specific styling */
 .sizeSelection::-webkit-slider-runnable-track {
-    background: var(--secondary-light);
+    background: var(--main-color);
     height: 0.7rem;
     border-radius: 15px;
     border: 1px solid var(--main-dark);
     box-shadow: rgba(26, 25, 25, 0.3) 0px 3px 10px;
 
 }.sizeSelection::-moz-range-track {
-    background: var(--secondary-light);
+    background: var(--main-color);
     height: 0.7rem;
     border-radius: 15px;
     border: 1px solid var(--main-dark);
@@ -84,7 +144,7 @@ body {
     -webkit-appearance: none;
     appearance: none;
     margin-top: -7px;
-    background-color: #607d8b;
+    background-color: var(--main-dark);
     border-radius: 50%;
     height: 1.5rem;
     width: 1.5rem;
@@ -93,7 +153,7 @@ body {
 .sizeSelection::-moz-range-thumb {
     border: none;
     margin-top: -7px;
-    background-color: #607d8b;
+    background-color: var(--main-dark);
     border-radius: 50%;
     height: 1.5rem;
     width: 1.5rem;
@@ -105,8 +165,8 @@ body {
 }
 
 .sizeSelection:focus::-webkit-slider-thumb {
-    background-color: #c49000;
-    box-shadow: 0 0 7px 0 #c49000;
+    background-color: var(--secondary-dark);
+    box-shadow: 0 0 7px 0 var(--secondary-dark);
     height: 1.55rem;
     width: 1.55rem;
     margin-top: -7px;
@@ -114,8 +174,8 @@ body {
 }
 
 .sizeSelection:focus::-moz-range-thumb {
-    background-color: #c49000;
-    box-shadow: 0 0 7px 0 #c49000;
+    background-color: var(--secondary-dark);
+    box-shadow: 0 0 7px 0 var(--secondary-dark);
     height: 1.55rem;
     width: 1.55rem;
     margin-top: -7px;
@@ -127,8 +187,8 @@ body {
 }
 
 .sizeSelection:hover::-webkit-slider-thumb {
-    background-color: #c49000;
-    box-shadow: 0 0 7px 0 #c49000;
+    background-color: var(--secondary-dark);
+    box-shadow: 0 0 7px 0 var(--secondary-dark);
     height: 1.55rem;
     width: 1.55rem;
     margin-top: -7px;
@@ -136,8 +196,8 @@ body {
 }
 
 .sizeSelection:hover::-moz-range-thumb {
-    background-color: #c49000;
-    box-shadow: 0 0 7px 0 #c49000;
+    background-color: var(--secondary-dark);
+    box-shadow: 0 0 7px 0 var(--secondary-dark);
     height: 1.55rem;
     width: 1.55rem;
     margin-top: -7px;
