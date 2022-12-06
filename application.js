@@ -15,17 +15,23 @@ function makeRows(rows, cols) {
     };
 }; makeRows(16, 16);
 
-//Remove the whole grid
+//Remove the grid
 function removeElementByClass(className) {
     const element = document.getElementsByClassName('grid-item');
     while (element.length > 0) {
         element[0].parentNode.removeChild(element[0]);
     }
 }
+//Clear button
+const btn = document.querySelector('#clearBtn');
+btn.addEventListener('click', function(e) {
+    removeElementByClass('grid-item');
+    makeRows(sliderValue, sliderValue)
+})
 // Range Slider
 let slider = document.getElementById("gridRange");
 let output = document.getElementById("sliderOutput");
-let sliderValue = (0);
+let sliderValue = (16);
 output.innerHTML = slider.value + ' x ' + slider.value;
 
 slider.onchange = function () {
@@ -40,8 +46,4 @@ slider.oninput = function () {
     sliderValue = this.value;
 }
 
-//const btn = document.querySelector('#btnGenerate');
-//btn.addEventListener('click', function(e) {
-//    removeElementByClass('grid-item');
-//    makeRows(sliderValue, sliderValue)
-//})
+
