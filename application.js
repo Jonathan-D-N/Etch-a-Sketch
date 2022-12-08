@@ -1,5 +1,3 @@
-
-let colorPick = 'orange'
 //Create the gridContainer on page load
 const container = document.querySelector('#container')
 
@@ -53,23 +51,40 @@ setActive.addEventListener('click', function(e) {
     let div1 = document.querySelector('#colorBtn');
     let div2 = document.querySelector('#rainbowBtn');
     let div3 = document.querySelector('#eraserBtn');
-    div1.classList.remove('active')
-    div2.classList.remove('active')
-    div3.classList.remove('active') 
+    div1.classList.remove('active');
+    div2.classList.remove('active');
+    div3.classList.remove('active');
     if (e.target.id == ('colorBtn')) {
-        e.target.classList.add('active')
+        activeBtnSelection = 'colorBtn'
+        e.target.classList.add('active');
     } else if (e.target.id == ('rainbowBtn')) {
-        e.target.classList.add('active')
+        activeBtnSelection = 'rainbowBtn'
+        e.target.classList.add('active');
     } else if (e.target.id == ('eraserBtn')) {
-        e.target.classList.add('active')
+        activeBtnSelection = 'eraserBtn'
+        e.target.classList.add('active');
     }
 })
 
+let colorSelection = document.getElementById('colorSelector')
+colorSelection.addEventListener("input", function() {
+    document.getElementById('colorSelector').innerHTML = colorSelection.value;
+})
+
 //select 'grid-item' on mouseover
+let activeBtnSelection = 'colorBtn'
 const draw = document.getElementById('container');
 draw.addEventListener('mouseover', function(e) {
     if (e.target.classList.contains('grid-item')){
-    e.target.style.backgroundColor = colorPick;
+        if (activeBtnSelection == 'colorBtn') {
+            e.target.style.backgroundColor = colorSelection.value;
+        }
+        else if (activeBtnSelection == 'rainbowBtn') {
+            e.target.style.backgroundColor = 'orange';
+        }
+        else if (activeBtnSelection == 'eraserBtn') {
+            e.target.style.backgroundColor = ''
+        }
     }
 })
 
