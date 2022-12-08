@@ -33,7 +33,7 @@ body {
     grid-row-gap: 0px;
 }
 
-.settingsContainer {
+#settingsContainer {
     display: grid;
     width: 25vw;
     justify-content: right;
