@@ -95,10 +95,9 @@ window.addEventListener('mouseup', (e) => {
         isDrawing = false;
     }
 })
-
-//Draw on mouseover
-const draw = document.getElementById('container');
-draw.addEventListener('mouseover', function(e) {
+//draw on mouseover
+window.addEventListener('mouseover', draw, false);
+function draw (e) {
     if (isDrawing == false) {
         return;
     } else if (e.target.classList.contains('grid-item')){
@@ -112,5 +111,13 @@ draw.addEventListener('mouseover', function(e) {
                 e.target.style.backgroundColor = ''
             }
     }
-})
+}
+//draw on click
+window.addEventListener('click', clickdraw, false);
+function clickdraw (e) {
+    isDrawing = true;
+    draw(e)
+    isDrawing = false;
+}
+
 
