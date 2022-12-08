@@ -23,8 +23,8 @@ function removeElementByClass(className) {
     }
 }
 //Clear button
-const btn = document.querySelector('#clearBtn');
-btn.addEventListener('click', function(e) {
+const clearBtn = document.querySelector('#clearBtn');
+clearBtn.addEventListener('click', function(e) {
     removeElementByClass('grid-item');
     makeRows(sliderValue, sliderValue)
 })
@@ -51,36 +51,72 @@ setActive.addEventListener('click', function(e) {
     let div1 = document.querySelector('#colorBtn');
     let div2 = document.querySelector('#rainbowBtn');
     let div3 = document.querySelector('#eraserBtn');
-    div1.classList.remove('active');
-    div2.classList.remove('active');
-    div3.classList.remove('active');
+
     if (e.target.id == ('colorBtn')) {
         activeBtnSelection = 'colorBtn'
         e.target.classList.add('active');
+        div2.classList.remove('active');
+        div3.classList.remove('active');
     } else if (e.target.id == ('rainbowBtn')) {
         activeBtnSelection = 'rainbowBtn'
         e.target.classList.add('active');
+        div1.classList.remove('active');
+        div3.classList.remove('active');
     } else if (e.target.id == ('eraserBtn')) {
         activeBtnSelection = 'eraserBtn'
         e.target.classList.add('active');
+        div1.classList.remove('active');
+        div2.classList.remove('active');
+    }
+})
+//select 'grid-item' on mouseover
+let activeBtnSelection = 'colorBtn'
+let isDrawing = false;
+let enableCall = true;
+let target = ''
+addEventListener('mousedown', function(e) {
+    target = e.target;
+    isDrawing = true;
+    this.setTimeout(() => enableCall = true, 100)
+});
+window.addEventListener('mouseup', (e) => {
+    if (isDrawing) {
+        isDrawing = false;
     }
 })
 
-let colorSelection = document.getElementById('colorSelector')
-colorSelection.addEventListener("input", function() {
-    document.getElementById('colorSelector').innerHTML = colorSelection.value;
+//Select a color for the 'colorBtn'
+let colorButtonSelection = document.getElementById('colorSelector')
+colorButtonSelection.addEventListener("input", function() {
+    document.getElementById('colorSelector').innerHTML = colorButtonSelection.value;
 })
 
-//select 'grid-item' on mouseover
-let activeBtnSelection = 'colorBtn'
+//Randomized RGB value for the rainbow button
+function getRandomRgb() {
+    let num = Math.round(0xffffff * Math.random());
+    let r = num >> 16;
+    let g = num >> 8 & 255;
+    let b = num & 255;
+    return 'rgb(' + r + ', '+ g + ', ' + b + ')';
+}
+for (let i = 0; i < 10; i++) {
+    console.log(getRandomRgb());
+  }
+
 const draw = document.getElementById('container');
 draw.addEventListener('mouseover', function(e) {
+    if (!isDrawing) return;
+
+    enableCall = false;
+    if (isDrawing) {
+        setTimeout(() => enableCall = true, 100)
+    }
     if (e.target.classList.contains('grid-item')){
         if (activeBtnSelection == 'colorBtn') {
-            e.target.style.backgroundColor = colorSelection.value;
+            e.target.style.backgroundColor = colorButtonSelection.value;
         }
         else if (activeBtnSelection == 'rainbowBtn') {
-            e.target.style.backgroundColor = 'orange';
+            e.target.style.backgroundColor = getRandomRgb();
         }
         else if (activeBtnSelection == 'eraserBtn') {
             e.target.style.backgroundColor = ''
