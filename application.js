@@ -1,5 +1,6 @@
 
 //Create the gridContainer on page load
+let colorPick = 'orange'
 const container = document.querySelector('#container')
 
 const grid = document.createElement('div');
@@ -11,6 +12,7 @@ function makeRows(rows, cols) {
     grid.style.setProperty('--grid-cols', cols);
     for (c = 0; c < (rows * cols); c++) {
         let cell = document.createElement("div");
+        grid.appendChild(cell).id = "grid-item";
         grid.appendChild(cell).className = "grid-item";
     };
 }; makeRows(16, 16);
@@ -45,48 +47,14 @@ slider.oninput = function () {
     output.innerHTML = this.value + ' x ' + this.value;
     sliderValue = this.value;
 }
-//track mousedown, mousemove, and mouseup to enable/disable drawing.
-let isDrawing = false;
-let enableCall = true;
-let target = ''
-addEventListener('mousedown', (e) => {
-    target = e.target;
-    isDrawing = true;
-    setTimeout(() => enableCall = true, 100)
-});
 
-addEventListener('mousemove', (e) => {
-    if(!enableCall) return;
 
-    enableCall = false;  
-    if (isDrawing) {
-        console.log(target)
-        setTimeout(() => enableCall = true, 100)
+const draw = document.getElementById('container')
+
+draw.addEventListener('mouseover', (e) => {
+    if (e.target.classList.contains('grid-item')){
+    console.log(e.target);
+    e.target.style.backgroundColor = colorPick;
     }
 })
-
-window.addEventListener('mouseup', (e) => {
-    if (isDrawing) {
-        isDrawing = false;
-    }
-})
-
-document.body.addEventListener('mousemove', throttle(target, 300));
-
-function throttle(callback, interval) {
-    let enableCall = true;
-
-    return function (...args) {
-        if (!enableCall) return;
-
-        enableCall = false;
-        if (isDrawing) {
-            target = e.target;
-            console.log(target)
-        callback.apply(this, args);
-        setTimeout(() => enableCall = true, interval);
-        }}
-}
-
-
 
