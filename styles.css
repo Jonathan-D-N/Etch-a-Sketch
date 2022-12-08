@@ -87,7 +87,7 @@ input[type='color']:hover {
     transition-duration: 0.4s;
 }
 
-#sliderOutput {
+#sliderValue {
     display: flex;
     justify-content: center;
 }
