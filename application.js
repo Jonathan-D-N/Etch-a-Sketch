@@ -55,8 +55,7 @@ setActive.addEventListener('click', function(e) {
     let div3 = document.querySelector('#eraserBtn');
     div1.classList.remove('active')
     div2.classList.remove('active')
-    div3.classList.remove('active')
- 
+    div3.classList.remove('active') 
     if (e.target.id == ('colorBtn')) {
         e.target.classList.add('active')
     } else if (e.target.id == ('rainbowBtn')) {
