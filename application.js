@@ -1,6 +1,6 @@
 
-//Create the gridContainer on page load
 let colorPick = 'orange'
+//Create the gridContainer on page load
 const container = document.querySelector('#container')
 
 const grid = document.createElement('div');
@@ -47,13 +47,29 @@ slider.oninput = function () {
     output.innerHTML = this.value + ' x ' + this.value;
     sliderValue = this.value;
 }
+//remove active class, assign active class to user selection
+const setActive = document.getElementById('settingsContainer');
+setActive.addEventListener('click', function(e) {
+    let div1 = document.querySelector('#colorBtn');
+    let div2 = document.querySelector('#rainbowBtn');
+    let div3 = document.querySelector('#eraserBtn');
+    div1.classList.remove('active')
+    div2.classList.remove('active')
+    div3.classList.remove('active')
+ 
+    if (e.target.id == ('colorBtn')) {
+        e.target.classList.add('active')
+    } else if (e.target.id == ('rainbowBtn')) {
+        e.target.classList.add('active')
+    } else if (e.target.id == ('eraserBtn')) {
+        e.target.classList.add('active')
+    }
+})
 
-
-const draw = document.getElementById('container')
-
-draw.addEventListener('mouseover', (e) => {
+//select 'grid-item' on mouseover
+const draw = document.getElementById('container');
+draw.addEventListener('mouseover', function(e) {
     if (e.target.classList.contains('grid-item')){
-    console.log(e.target);
     e.target.style.backgroundColor = colorPick;
     }
 })
