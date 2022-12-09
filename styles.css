@@ -71,23 +71,24 @@ input[type='color']::-moz-focus-inner {
 }
 
 button {
+    padding: 0 15px;
+    border: 1px solid var(--main-dark);
+    border-radius: 8px;
     box-shadow: 1px 1px 5px rgba(26, 25, 25, 0.3);
+}
+
+button:hover {
+    background-color: var(--main-color);
 }
 
 button, input {
     width: 100%;
     border: none;
     height: 45px;
-    color: inherit;
+    color: var(--main-color);
     font-family: inherit;
     font-size: inherit;
     outline: none;
-}
-
-button {
-    padding: 0 15px;
-    border: 1px solid var(--main-dark);
-    border-radius: 8px;
 }
 
 button.active {
