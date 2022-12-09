@@ -91,12 +91,16 @@ button, input {
     outline: none;
 }
 
-button.active {
+button.active:not(#clearBtn) {
     background-color: var(--main-dark);
     color: var(--main-white);
 }
 
-button,
+#clearBtn:active {
+    transform: scale(0.99);
+}
+
+button:not(#clearBtn),
 input[type='color'] {
 transition: transform 0.1s ease-in-out;
 }
