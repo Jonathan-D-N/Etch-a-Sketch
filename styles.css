@@ -97,7 +97,7 @@ button.active:not(#clearBtn) {
 }
 
 #clearBtn:active {
-    transform: scale(0.99);
+    transform: scale(1.00);
 }
 
 button:not(#clearBtn),
