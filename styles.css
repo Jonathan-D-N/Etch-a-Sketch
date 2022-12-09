@@ -64,6 +64,19 @@ input[type='color']::-webkit-color-swatch {
     border-radius: 50px;
     box-shadow: rgb(114, 114, 114) 0px 3px 7px;
 }
+
+input[type='color']::-moz-color-swatch,
+::-moz-focus-inner {
+    border: none;
+    border-radius: 50px;
+    box-shadow: rgb(114, 114, 114) 0px 3px 7px;
+}
+
+input[type='color']::-moz-focus-inner {
+    padding: 0;
+}
+
+
 button {
     background-color: var(--secondary-light);
     color: black;
