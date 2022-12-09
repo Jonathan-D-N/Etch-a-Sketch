@@ -2,11 +2,9 @@
 :root {
     --grid-cols: 1;
     --grid-rows: 1;
-    --main-color: #90a4ae;
+    --main-light: #e4e3e4;
     --main-dark: #62757f;
     --secondary-dark: #4b636e;
-    --main-light: #c1d5e0;
-    --secondary-light: #e4e3e3;
     --main-white: #f8f8f8;
 }
 
@@ -16,13 +14,12 @@
     display: block;
     margin-bottom: 0;
     margin-top: 0;
-    
+    color: var(--main-dark)
 }
 
 body {
     font-family: 'roboto', sans-serif;
-    background-color: var(--secondary-light);
-    color: var(--main-dark);
+    background-color: var(--main-light);
 }
 
 #container {
@@ -42,11 +39,6 @@ body {
     width: auto;
     align-content: center;
     grid-template-columns: auto;
-}
-
-.active {
-    background-color: rgb(31, 31, 31);
-    color: white;
 }
 
 input[type='color'] {
@@ -78,6 +70,9 @@ input[type='color']::-moz-focus-inner {
     padding: 0;
 }
 
+button {
+    box-shadow: 1px 1px 5px rgba(26, 25, 25, 0.3);
+}
 
 button, input {
     width: 100%;
@@ -97,7 +92,7 @@ button {
 
 button.active {
     background-color: var(--main-dark);
-    color: var(--main-light);
+    color: var(--main-white);
 }
 
 button,
@@ -128,6 +123,7 @@ input[type='color']:hover {
     height: 700px;
     width: 700px;
     background-color: var(--main-white);
+    border-radius: 8px;
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
     box-shadow: rgba(26, 25, 25, 0.3) 0px 3px 10px;
@@ -250,13 +246,30 @@ input[type='color']:hover {
     }
     #container {
         grid-template-columns: 600px;
-        grid-template-rows: 350px 400px;
+        grid-template-rows: 400px 600px;
     }
 
     #settingsContainer {
         gap: 16px;
-        transform: scale(0.85);
-        margin-top: -25px;
+        grid-template-columns: 200px 200px;
+        grid-template-rows: auto auto auto auto auto;
+        transform: scale(1.43);
+    }
+
+        #colorSelector {
+        grid-column: 1 / 3;
+    }
+
+    #colorBtn {
+        grid-column: 1;
+    }
+
+    #sliderValue {
+        grid-column: 1 / 3;
+    }
+
+    .sliderContainer {
+        grid-column: 1 / 3;
     }
 
     #sliderValue {
@@ -264,25 +277,24 @@ input[type='color']:hover {
     }
 
     .gridContainer {
-        width: 400px;
-        height: 400px;
+        width: 600px;
+        height: 600px;
     }
 }
 
 @media (max-width: 600px) {
     .title {
         font-size: 50px;
-        margin: auto;
     }
     #container {
-        grid-template-columns: 600px;
-        grid-template-rows: 250px 300px;
+        grid-template-columns: 450px;
+        grid-template-rows: 210px 300px;
     }
 
     #settingsContainer {
-            gap: 16px;
-            grid-template-columns: 150px 150px;
-            grid-template-rows: auto auto auto auto auto;
+        gap: 16px;
+        transform: scale(0.72);
+        margin: 0 auto 0 auto;
     }
 
     #colorSelector {
@@ -299,6 +311,7 @@ input[type='color']:hover {
 
     .sliderContainer {
         grid-column: 1 / 3;
+        transform: scale(1.3);
     }
 
     .gridContainer {
