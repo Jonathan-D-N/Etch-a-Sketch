@@ -27,19 +27,21 @@ body {
 
 #container {
     display: grid;
-    grid-template-columns: 25vw 50vw 25vw;
-    grid-template-rows: 40vw;
+    justify-content: center;
+    margin: 0 auto;
+    grid-template-columns: 280px 700px 280px;
+    grid-template-rows: 700px;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 }
 
 #settingsContainer {
     display: grid;
-    width: 25vw;
-    justify-content: right;
+    margin: auto;
+    gap: 30px;
+    width: auto;
     align-content: center;
     grid-template-columns: auto;
-    grid-template-rows: repeat(auto);
 }
 
 .active {
@@ -77,27 +79,35 @@ input[type='color']::-moz-focus-inner {
 }
 
 
+button, input {
+    width: 100%;
+    border: none;
+    height: 45px;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+}
+
 button {
-    background-color: var(--secondary-light);
-    color: black;
-    border: 2px solid var(--main-dark);
-    padding: 15px 32px;
-    box-shadow: rgb(114, 114, 114) 0px 1px 7px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 15px;
-    border-radius: 4px;
-    width: 15vw;
-    height: 5.5vh;
-    transition-duration: 0.4s;
+    padding: 0 15px;
+    border: 1px solid var(--main-dark);
+    border-radius: 8px;
+}
+
+button.active {
+    background-color: var(--main-dark);
+    color: var(--main-light);
+}
+
+button,
+input[type='color'] {
+transition: transform 0.1s ease-in-out;
 }
 
 button:hover,
 input[type='color']:hover {
     transform: scale(1.05);
-    transition-duration: 0.4s;
 }
 
 #sliderValue {
@@ -108,7 +118,7 @@ input[type='color']:hover {
 .sliderContainer {
     display: flex;
     justify-content: center;
-    margin-top: 15px;
+    margin-top: -18px;
 }
 
 .gridContainer {
@@ -222,3 +232,77 @@ input[type='color']:hover {
     transition-duration: 0.2s;
 }
 /* end of sizeSelection track/thumb styling */
+/* media queries */
+@media (max-width: 1200px) {
+    .title {
+        margin-left: 280px;
+    }
+
+    #container {
+        justify-content: center;
+        grid-template-columns: 280px 700px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .title {
+        margin: auto;
+    }
+    #container {
+        grid-template-columns: 600px;
+        grid-template-rows: 350px 400px;
+    }
+
+    #settingsContainer {
+        gap: 16px;
+        transform: scale(0.85);
+        margin-top: -25px;
+    }
+
+    #sliderValue {
+        margin-bottom: -4px;
+    }
+
+    .gridContainer {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 600px) {
+    .title {
+        font-size: 50px;
+        margin: auto;
+    }
+    #container {
+        grid-template-columns: 600px;
+        grid-template-rows: 250px 300px;
+    }
+
+    #settingsContainer {
+            gap: 16px;
+            grid-template-columns: 150px 150px;
+            grid-template-rows: auto auto auto auto auto;
+    }
+
+    #colorSelector {
+        grid-column: 1 / 3;
+    }
+
+    #colorBtn {
+        grid-column: 1;
+    }
+
+    #sliderValue {
+        grid-column: 1 / 3;
+    }
+
+    .sliderContainer {
+        grid-column: 1 / 3;
+    }
+
+    .gridContainer {
+        width: 300px;
+        height: 300px;
+    }
+}
