@@ -133,12 +133,11 @@ input[type='color']:hover {
     border: 1px solid #ddd;
 }
 
-/* .grid-item:hover {*/
-/*    background-color: red;*/
-/*} */
-/**/
+.grid-item:hover {
+    box-shadow: rgba(26, 25, 25, 0.3) 1px 1px 10px;
+}
 
-/* range sizeSelection (track) and thumb class */
+/* range slider */
 .sizeSelection {
     -webkit-appearance: none;
     appearance: none;
@@ -147,7 +146,6 @@ input[type='color']:hover {
     width: 200px;
 }
 
-/* track browser-specific styling */
 .sizeSelection::-webkit-slider-runnable-track {
     background: var(--main-color);
     height: 0.7rem;
@@ -163,7 +161,6 @@ input[type='color']:hover {
     box-shadow: rgba(26, 25, 25, 0.3) 0px 3px 10px;
 }
 
-/* thumb browser-specific styling */
 .sizeSelection::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -183,7 +180,6 @@ input[type='color']:hover {
     width: 1.5rem;
 }
 
-/* box-shadow on focus and hover w/ browser compatibility */
 .sizeSelection:focus {
     outline: none;
 }
@@ -227,7 +223,8 @@ input[type='color']:hover {
     margin-top: -7px;
     transition-duration: 0.2s;
 }
-/* end of sizeSelection track/thumb styling */
+/* end range slider */
+
 /* media queries */
 @media (max-width: 1200px) {
     .title {
