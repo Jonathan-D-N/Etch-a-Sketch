@@ -43,30 +43,19 @@ slider.oninput = function () {
 }
 
 //Select button mode (color, random color, eraser)
-let activeButtonSelection = 'colorBtn'
+let activeButtonSelection = 'colorBtn';
 const setActiveButton = document.getElementById('settingsContainer');
 setActiveButton.addEventListener('click', function(e) {
-    let colorButton = document.querySelector('#colorBtn');
-    let randomButton = document.querySelector('#randomBtn');
-    let eraserButton = document.querySelector('#eraserBtn');
-
-    if (e.target.id == ('colorBtn')) {
-        activeButtonSelection = 'colorBtn'
-        e.target.classList.add('active');
-        randomButton.classList.remove('active');
-        eraserButton.classList.remove('active');
-    } else if (e.target.id == ('randomBtn')) {
-        activeButtonSelection = 'randomBtn'
-        e.target.classList.add('active');
-        colorButton.classList.remove('active');
-        eraserButton.classList.remove('active');
-    } else if (e.target.id == ('eraserBtn')) {
-        activeButtonSelection = 'eraserBtn'
-        e.target.classList.add('active');
-        colorButton.classList.remove('active');
-        randomButton.classList.remove('active');
+  const buttons = document.querySelectorAll('#colorBtn, #randomBtn, #eraserBtn');
+  for (let button of buttons) {
+    if (button.id === e.target.id) {
+      activeButtonSelection = e.target.id;
+      e.target.classList.add('active');
+    } else {
+      button.classList.remove('active');
     }
-})
+  }
+});
 
 //Select a color for the 'colorBtn'
 let colorButtonSelection = document.getElementById('colorSelector')
@@ -86,17 +75,20 @@ function getRandomRgb() {
 //Enable/disable drawing with mousedown/up
 let isDrawing = false;
 let target = ''
-addEventListener('mousedown', function(e) {
+window.addEventListener('mousedown', function(e) {
     target = e.target;
     isDrawing = true;
+    window.addEventListener('mouseover', draw, false);
 });
+
 window.addEventListener('mouseup', (e) => {
     if (isDrawing) {
         isDrawing = false;
+        window.removeEventListener('mouseover', draw, false);
     }
-})
+});
 //draw on mouseover
-window.addEventListener('mouseover', draw, false);
+
 function draw (e) {
     if (isDrawing == false) {
         return;
