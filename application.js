@@ -90,7 +90,6 @@ window.addEventListener('mouseup', (e) => {
 //draw on mouseover
 
 function draw (e) {
-    console.log('test')
     if (isDrawing == false) {
         return;
     } else if (e.target.classList.contains('grid-item')){
