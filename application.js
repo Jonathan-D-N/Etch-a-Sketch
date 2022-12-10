@@ -78,7 +78,7 @@ let target = ''
 window.addEventListener('mousedown', function(e) {
     target = e.target;
     isDrawing = true;
-    window.addEventListener('mouseover', draw, false);
+    window.addEventListener('mouseover', draw, false);   
 });
 
 window.addEventListener('mouseup', (e) => {
@@ -90,6 +90,7 @@ window.addEventListener('mouseup', (e) => {
 //draw on mouseover
 
 function draw (e) {
+    console.log('test')
     if (isDrawing == false) {
         return;
     } else if (e.target.classList.contains('grid-item')){
@@ -111,5 +112,3 @@ function clickdraw (e) {
     draw(e)
     isDrawing = false;
 }
-
-
