@@ -51,7 +51,9 @@ setActiveButton.addEventListener('click', function(e) {
     if (button.id === e.target.id) {
       activeButtonSelection = e.target.id;
       e.target.classList.add('active');
-    } else {
+    } else if (e.target.id === 'clearBtn') {
+        return;
+    }else {
       button.classList.remove('active');
     }
   }
@@ -78,7 +80,7 @@ let target = ''
 window.addEventListener('mousedown', function(e) {
     target = e.target;
     isDrawing = true;
-    window.addEventListener('mouseover', draw, false);   
+    window.addEventListener('mouseover', draw, false);  
 });
 
 window.addEventListener('mouseup', (e) => {
@@ -88,7 +90,6 @@ window.addEventListener('mouseup', (e) => {
     }
 });
 //draw on mouseover
-
 function draw (e) {
     if (isDrawing == false) {
         return;
