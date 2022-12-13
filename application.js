@@ -46,6 +46,7 @@ slider.oninput = function () {
 let activeButtonSelection = '#000000';
 const setActiveButton = document.getElementById('settingsContainer');
 setActiveButton.addEventListener('click', function(e) {
+    const temp = e.target.id
   const buttons = document.querySelectorAll('#colorBtn, #randomBtn, #eraserBtn');
   for (let button of buttons) {
     if (button.id === e.target.id) {
@@ -56,12 +57,14 @@ setActiveButton.addEventListener('click', function(e) {
             activeButtonSelection = 'randomRgb';
       } else if (e.target.id == 'eraserBtn') {
         activeButtonSelection = ''
-      } else if (e.target.id == 'clearBtn') {
-
-        return;
       }
-    } else{
-    button.classList.remove('active');
+    } else {
+        //prevent 'active' removal for clicking white-space & other elements in settingsContainer
+        if (e.target.id != 'settingsContainer' && e.target.id != 'clearBtn'
+         && e.target.id != 'sliderValue' && e.target.id != 'rangeSlider' &&
+          e.target.className != 'sliderContainer') {
+        button.classList.remove('active');
+        }       
   }
   }});
 
