@@ -43,28 +43,35 @@ slider.oninput = function () {
 }
 
 //Select button mode (color, random color, eraser)
-let activeButtonSelection = 'colorBtn';
+let activeButtonSelection = '#000000';
 const setActiveButton = document.getElementById('settingsContainer');
 setActiveButton.addEventListener('click', function(e) {
   const buttons = document.querySelectorAll('#colorBtn, #randomBtn, #eraserBtn');
   for (let button of buttons) {
     if (button.id === e.target.id) {
-      activeButtonSelection = e.target.id;
       e.target.classList.add('active');
-    } else if (e.target.id === 'clearBtn') {
+      if (e.target.id == 'colorBtn') {
+        activeButtonSelection = colorButtonSelection.value
+      } else if (e.target.id == 'randomBtn') {
+            activeButtonSelection = 'randomRgb';
+      } else if (e.target.id == 'eraserBtn') {
+        activeButtonSelection = ''
+      } else if (e.target.id == 'clearBtn') {
+
         return;
-    }else {
-      button.classList.remove('active');
-    }
+      }
+    } else{
+    button.classList.remove('active');
   }
-});
+  }});
 
 //Select a color for the 'colorBtn'
-let colorButtonSelection = document.getElementById('colorSelector')
+const colorButtonSelection = document.getElementById('colorSelector');
 colorButtonSelection.addEventListener("input", function() {
-    document.getElementById('colorSelector').innerHTML = colorButtonSelection.value;
-})
+activeButtonSelection = colorButtonSelection.value;
+document.querySelector('#colorBtn').classList.add('active');
 
+});
 //Randomized RGB value for the random button
 function getRandomRgb() {
     let num = Math.round(0xffffff * Math.random());
@@ -76,37 +83,28 @@ function getRandomRgb() {
 
 //Enable/disable drawing with mousedown/up
 let isDrawing = false;
-let target = ''
-window.addEventListener('mousedown', function(e) {
-    target = e.target;
+container.addEventListener('mousedown', function(e) {
     isDrawing = true;
     window.addEventListener('mouseover', draw, false);  
 });
 
-window.addEventListener('mouseup', (e) => {
-    if (isDrawing) {
+window.addEventListener('mouseup', function() {
         isDrawing = false;
         window.removeEventListener('mouseover', draw, false);
-    }
 });
 //draw on mouseover
 function draw (e) {
-    if (isDrawing == false) {
-        return;
-    } else if (e.target.classList.contains('grid-item')){
-            if (activeButtonSelection == 'colorBtn') {
-                e.target.style.backgroundColor = colorButtonSelection.value;
-            }
-            else if (activeButtonSelection == 'randomBtn') {
-                e.target.style.backgroundColor = getRandomRgb();
-            }
-            else if (activeButtonSelection == 'eraserBtn') {
-                e.target.style.backgroundColor = ''
-            }
+    if(e.target.classList.contains('grid-item')) {
+        if(activeButtonSelection == 'randomRgb'){
+            e.target.style.backgroundColor = getRandomRgb();
+        } else {
+        e.target.style.backgroundColor = activeButtonSelection;
+        }
     }
 }
-//draw on click
-window.addEventListener('click', clickdraw, false);
+
+//draw on mousedown
+window.addEventListener('mousedown', clickdraw, false);
 function clickdraw (e) {
     isDrawing = true;
     draw(e)
